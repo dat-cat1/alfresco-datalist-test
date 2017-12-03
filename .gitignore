@@ -4,4 +4,5 @@ alf_data*
 .idea
 *.log*
 *solr
+${alfresco.data.location}*
 pom.xml.versionsBackup
