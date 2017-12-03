@@ -3,4 +3,5 @@ alf_data*
 *.iml
 .idea
 *.log*
+*solr
 pom.xml.versionsBackup
