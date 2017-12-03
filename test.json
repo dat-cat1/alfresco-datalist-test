@@ -1,0 +1,4 @@
+{"NodeRefs": "workspace://SpacesStore/a534356f-8dd6-4d9a-8ffb-dc1adb140c01",
+"include": ["dl:issueStatus", "cm:wtf", "cm:created",  "dl:issuePriority" ],	
+"exclude": ["dl:issueStatus", "cm:wtf", "abcent:test",  "dl:issuePriority" ]
+}

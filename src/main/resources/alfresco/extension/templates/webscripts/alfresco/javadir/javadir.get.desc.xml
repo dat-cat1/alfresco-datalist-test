@@ -1,0 +1,8 @@
+<webscript>
+    <shortname>Folder Listing Utility</shortname>
+    <description>Java-backed implementation of listing folder contents
+    </description>
+    <url>/javadir/{folderpath}?verbose={verbose?}</url>
+    <format default='html'></format>
+    <authentication>user</authentication>
+</webscript>

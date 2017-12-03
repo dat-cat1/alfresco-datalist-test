@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>Web Script Status 500 - Internal Error</title>
+      <link rel="stylesheet" href="/alfresco/css/webscripts.css" type="text/css" />
+   </head>
+   <body>
+      <div>
+         <table>
+            <tr>
+               <td><img src="/alfresco/images/logo/AlfrescoLogo32.png" alt="Alfresco" /></td>
+               <td><span class="title">Web Script Status 500 - Internal Error</span></td>
+            </tr>
+         </table>
+         <br/>
+         <table>
+            <tr><td>The Web Script <a href="%2Falfresco%2Fs%2Fxlsx%2FSites.xlsx">/alfresco/s/xlsx/Sites.xlsx</a> has responded with a status of 500 - Internal Error.</td></tr>
+         </table>
+         <br/>
+         <table>
+            <tr><td><b>500 Description:</b></td><td> An error inside the HTTP server which prevented it from fulfilling the request.</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td><b>Message:</b></td><td>java.lang.NullPointerException</td></tr>
+            <tr><td><b>Server</b>:</td><td>Community v5.2.0 (r135134-b14) schema 10,005</td></tr>
+            <tr><td><b>Time</b>:</td><td>Dec 3, 2017 11:34:09 AM</td></tr>
+            <tr><td></td><td>&nbsp;</td></tr>
+            <tr><td><b>Diagnostics</b>:</td><td><a href="/alfresco/s/script/alfresco/registers/registers.post">Inspect Web Script (alfresco/registers/registers.post)</a></td></tr>
+         </table>
+      </div>
+   </body>
+</html>
+

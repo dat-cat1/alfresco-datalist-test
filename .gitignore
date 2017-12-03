@@ -1,0 +1,6 @@
+target
+alf_data*
+*.iml
+.idea
+*.log*
+pom.xml.versionsBackup
