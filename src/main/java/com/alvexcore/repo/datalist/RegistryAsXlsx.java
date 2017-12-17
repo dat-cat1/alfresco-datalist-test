@@ -1,8 +1,16 @@
 package com.alvexcore.repo.datalist;
 
+
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
-import java.io.*;
-import java.util.*;
+
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.content.MimetypeMap;
@@ -25,7 +33,8 @@ import org.json.JSONObject;
 import org.springframework.extensions.webscripts.*;
 
 
-public class RegistryAsXLSX extends AbstractWebScript {
+
+public class RegistryAsXlsx extends AbstractWebScript {
 
     private NamespaceService namespaceService;
 
@@ -63,22 +72,27 @@ public class RegistryAsXLSX extends AbstractWebScript {
         List<String> excludeList = new ArrayList<>();
 
         try {
-//            System.out.println(bufferReader.readLine());
             jsonObj = new JSONObject(bufferReader.readLine());
             if (jsonObj.get("NodeRefs").getClass()==JSONArray.class) {
                 nodesList = jsonObj.getJSONArray("NodeRefs");
-                for(int i = 0; i < nodesList.length(); siteNodes.add((String) nodesList.get(i++)));
+                for(int i = 0; i < nodesList.length(); i++){
+                    siteNodes.add(nodesList.get(i).toString());
+                }
             }
             else {
                 dataListNode = jsonObj.getString("NodeRefs");
             }
             if (jsonObj.has("include")) {
                 include = jsonObj.getJSONArray("include");
-                for (int i = 0; i < include.length(); includeList.add((String) include.get(i++)));
+                for (int i = 0; i < include.length(); i++) {
+                    includeList.add(include.get(i).toString());
+                }
             }
             else if ((jsonObj.has("exclude"))) {
                 exclude = jsonObj.getJSONArray("exclude");
-                for (int i = 0; i < exclude.length(); excludeList.add((String) exclude.get(i++)));
+                for (int i = 0; i < exclude.length(); i++){
+                    excludeList.add(exclude.get(i).toString());
+                }
             }
 
             Workbook wb;
@@ -95,7 +109,7 @@ public class RegistryAsXLSX extends AbstractWebScript {
             if (dataListNode==null) {
                 List<NodeRef> itemsNodes = siteNodes.stream().map(NodeRef::new).collect(Collectors.toList());
                 wb = createWorkbook(XLS_SHEET_NAME, includeList, excludeList, itemsNodes);
-                }
+            }
             else {
                 List<ChildAssociationRef> itemsNodesAssocs = nodeService.getChildAssocs(new NodeRef(dataListNode),
                         ContentModel.ASSOC_CONTAINS, RegexQNamePattern.MATCH_ALL);
@@ -124,7 +138,7 @@ public class RegistryAsXLSX extends AbstractWebScript {
      * @return workbook
      */
     protected Workbook createWorkbook(String XLS_SHEET_NAME, List<String> includeList,
-                                       List<String> excludeList, List<NodeRef> itemsNodes){
+                                      List<String> excludeList, List<NodeRef> itemsNodes){
 
         Workbook wb = new XSSFWorkbook();
 
@@ -165,8 +179,8 @@ public class RegistryAsXLSX extends AbstractWebScript {
                           int rowNum, CreationHelper createHelper, Sheet sheet) {
 
         fillRowData(rowNum,
-                    headers.stream().map(x -> x.toPrefixString(namespaceService)).collect(Collectors.toList()),
-                    createHelper, sheet);
+                headers.stream().map(x -> x.toPrefixString(namespaceService)).collect(Collectors.toList()),
+                createHelper, sheet);
         rowNum++;
 
         for (NodeRef item : itemsNodes) {
@@ -187,6 +201,4 @@ public class RegistryAsXLSX extends AbstractWebScript {
             cellNum++;
         }
     }
-
-
 }

@@ -31,9 +31,7 @@
 		<property name="folderSizeService" ref="folderSizeService"/>
 	</bean>
 
-	<bean id="webscript.alfresco.registers.registers.post" class="com.alvexcore.repo.datalist.RegistryAsXLSX" parent="webscript">
-		<property name="folderSizeService" ref="folderSizeService"/>
-		<property name="siteService" ref="SiteService"/>
+	<bean id="webscript.alfresco.registers.registers.post" class="com.alvexcore.repo.datalist.RegistryAsXlsx" parent="webscript">
 		<property name="nodeService" ref="NodeService"/>
 		<property name="namespaceService" ref="NamespaceService"/>
 		<property name="dictionaryService" ref="DictionaryService"/>
